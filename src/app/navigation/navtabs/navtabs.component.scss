@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+@mixin navtabs-component($wei) {
+    $primary: map-get($wei, primary);
+    $accent: map-get($wei, accent);
+    $background: map-get($wei, background);
+    $foreground: map-get($wei, foreground);
+    // Put all your theming styles here
+    .navtabs-container {
+        background-color: mat-color($wei-primary, 500);
+        a {
+            font-size: 18px;
+            font-family: "Work Sans", sans-serif;
+            font-weight: 300;
+            color: #323232;
+            line-height: 60px;
+            font-size: 18px;
+        }
+    }
+}
+
+
+/*$background: map-get($custom, background);
+                $foreground: map-get($custom, foreground);
+                .navtabs-container {
+                    background-color: mat-color($custom-primary, 500);
+                    a {
+                        font-size: 18px;
+                        font-family: "Work Sans", sans-serif;
+                        font-weight: 300;
+                        color: mat-color($foreground, text);
+                        background-color: mat-color($primary, lighter, 0.5);
+                        line-height: 60px;
+                    }*/

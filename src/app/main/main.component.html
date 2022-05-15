@@ -1,0 +1,333 @@
+<!--<div class="book-now-container">-->
+<div class="book-now-contai">
+
+    <!--下面是bootstrap按钮-->
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p>Plan Your Stay at Great Wolf Lodge Niagara Falls, Ontario</p>
+        </div>
+
+        <!--下面为日期-->
+        <!--Datepicker in a popup 来自ng bootstrap-->
+        <div class="bookdate now" fxLayout="row wrap" fxLayoutGap="1%" fxLayoutAlign="start center">
+
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="input-group" [ngStyle]="{'width': '160px'}">
+                        <!--改变框的宽度-->
+                        <input class="form-control" placeholder="Check In" name="dp" [(ngModel)]="models" ngbDatepicker #p="ngbDatepicker">
+                        <div class="input-group-append">
+                            <!--<button class="btn btn-outline-secondary calendar " (click)="p.toggle() " type="button "></button>-->
+                            <!-- font awesome icons或者去index中加一个bootstrap的链接-->
+                            <button class="btn btn-outline-secondary calendar fa fa-calendar" (click)="p.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+            <!--Custom day view 来自ng bootstrap-->
+
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="input-group" [ngStyle]="{'width': '160px'}">
+                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model " ngbDatepicker #b="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar fa fa-calendar" (click)="b.toggle()" type="button"></button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            <!--<pre>{{ model| json }}</pre>-->
+
+
+            <!--下面为选择人数-->
+            <div class="popele-set">
+                <div class="col">
+                    <div ngbDropdown class="d-inline-block" autoClose="outside">
+                        <button class="btn btn-outline-primary " id="dropdownForm1" ngbDropdownToggle>Guests</button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownForm1">
+                            <form class="px-4 py-3">
+                                <div class="form-group">
+
+                                    <li>
+                                        Adults:<select name="nub" [(ngModel)]="popeleinfo.nub">
+                                                 <option [value]="item" *ngFor="let item of popeleinfo.numberarry">{{item}}</option>
+                                               </select>
+                                    </li>
+
+                                    <li>
+                                        Kids: <select [(ngModel)]="popeleinfo.nub" name="nub">
+                                                 <option *ngFor="let item of popeleinfo.numberarry" [value]="item">{{item}}</option>
+                                             </select>
+                                        <br>(Infant-20)
+                                    </li>
+
+                                </div>
+
+
+                            </form>
+                            <div class="dropdown-divider"></div>
+                            <!--下面为隐藏按钮孩子的年龄 可以用viewchild @input或者看京东DOMO
+                            也可以用materail的组件-->
+                            <select name="nub" [(ngModel)]="popeleinfo.nub">
+                                <option [value]="item " *ngFor="let item of popeleinfo.numberarry">{{item}}</option>
+                              </select>
+                            <select name="nub " [(ngModel)]="popeleinfo.nub ">
+                                <option [value]="item " *ngFor="let item of popeleinfo.numberarry">{{item}}</option>
+                              </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <!--下面是弹出框的保存键-->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="d( 'Save click')">Save</button>
+        </div>
+
+    </ng-template>
+
+
+
+    <div class="book-now-button">
+        <!--下面是bootstrap中的混搭
+            <button class="btn btn-lg btn-outline-primary" (click)="open(content) ">Book Now</button>-->
+
+        <!--自己设置的按钮-->
+        <button class="button" (click)="open(content)">Book Now</button>
+
+    </div>
+</div>
+<div class="container">
+    <!--下面是图片转换-->
+    <ngb-carousel [interval]="3000" class="aa">
+        <!--<div fxLayout fxLayoutAlign="flex-end ">
+              <button mat-stroked-button color="primary ">
+                Book Now
+              </button>
+            </div>
+          
+          以上适用于material
+          
+          -->
+
+        <ng-template ngbSlide>
+            <img src="https://www.ahstatic.com/photos/b2m3_ho_00_p_1024x768.jpg" alt="First slide " style="display: block; width: 100%; ">
+            <div class="carousel-caption ">
+
+
+
+                <h3>First slide label</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            </div>
+        </ng-template>
+
+        <ng-template ngbSlide>
+            <img src="https://mercure-pattaya-ocean-resort.pattayahotel.info/data/Photos/700x500/11637/1163762/1163762325.JPEG " alt="Second slide" style="display: block; width: 100%;">
+            <div class="carousel-caption">
+
+                <h1 class="mat-display-3">Second slide label</h1>
+                <!--使用字体设置-->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </ng-template>
+
+        <ng-template ngbSlide>
+            <img src="https://www.gingerhotels.com/resourcefiles/hotelprofile/ginger-vapi-hotel-th.jpg " alt="Third slide" style="display: block; width: 100%;">
+            <div class="carousel-caption">
+                <h3>Third slide label</h3>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </div>
+        </ng-template>
+
+
+
+
+
+
+    </ngb-carousel>
+
+
+
+
+    <!--下面为大体的字设置-->
+    <div class="thailand">
+        <h3>
+            Thailand
+        </h3>
+    </div>
+
+
+</div>
+
+
+<section class="main-section">
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <div>
+            <h2 class="mat-subheading-2">Luxury beach front Resort</h2>
+            <!--mat-subheading-2  and mat-body字体设置中 material --->
+        </div>
+        <div>
+            <h3 class="mat-subheading-3">Asia's Tropical Paradise</h3>
+        </div>
+        <div>
+            <p fxFlex="70" fxFlexoffset="15" class="mat-body-1 ">
+                <!--fxFlexOffset 
+                设定子元素的偏移 ,fxFlex 
+定义子元素将如何相对于父容器和容器内的其他子元素调整其大小，增长或收缩 -->
+                is simply dunmy text of the printing and typesetting industry,simply dunmy text of the printing and typesetting industry,simply dunmy text of the printing and typesetting industry simply dunmy text of the printing and typesetting industry,simply dunmy
+                text of the printing and typesetting industry
+            </p>
+        </div>
+    </div>
+
+    <!--下面为mat-card 画面和字体fxLayout.xs="column "和fxlayout.lt-md="column "页面变宽 (fxLayout="row ")也是可以起到一样的作用-->
+
+    <!--<mat-card-content class="rooms-main-dispay " fxlayout.lt-md="column " fxFlexlayoutWrap fxLayoutGap="2% " fxLayoutAlign="center center ">竖排列 ，Wrap自动换行排列，fxLayoutGap=中间距离-->
+    <div class="rooms-main-dispay" fxlayout.lt-md="column" fxLayoutGap="2%" fxLayoutAlign="center center">
+        <!--竖排列 ，Wrap自动换行排列，fxLayoutGap=中间距离-->
+
+        <mat-card class="rooms-suites" fxFlex="40" fxFlex.sm="80">
+            <!--https://github.com/angular/flex-layout/wiki/Responsive-API-->
+            <mat-card-header fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+                <h2>Rooms &amp; Suites </h2>
+            </mat-card-header>
+            <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+                <button mat-raised-button color="primary">
+         Expore
+       </button>
+            </mat-card-actions>
+        </mat-card>
+
+
+        <mat-card class="beech-houses" fxFlex="40" fxFlex.sm="80">
+            <!--https://poychang.github.io/use-angular-flex-layout-package/-->
+            <mat-card-header fxLayout="column " fxLayout="row " fxLayoutAlign="center center">
+                <h2>Rooms &amp; Suites</h2>
+            </mat-card-header>
+            <mat-card-actions fxLayout="column" fxLayout="row" fxLayoutAlign="center center">
+                <button mat-raised-button color="primary">
+      Expore
+    </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</section>
+
+
+
+<!--内容太多可以采用《app-component》
+2routerLink 中的路由可以 列如 lifestyle/spa
+3.book-now中的日期设置[ng module]不可用 可以在ts中设置 像做的的京东小项目中
+4. ng bootstrap中的API中的其他设置可以在看看是否有更简便的应用-->
+
+
+
+<!--图片重叠-->
+<!--fxFlex.sm="80"决定图片的位置下面的fxFlex60+20=80
+
+<div class="calloutcard" fxLayout="row" fxFlex.sm="80" fxLayoutAlign="center center">
+    <mat-card class="example-card" fxFlex="60" fxLayout="column " fxLayout="row ">
+    </mat-card>
+
+    <mat-card class="example-card2" fxFlex="20" fxLayout="column " fxLayout="row" fxLayoutAlign="center center">
+        <mat-card-content class="call-out-content">
+            <h3>Your top Holiday Booker</h3>
+            <p>Thank you for being a friend. Travelled down the road and back again.Your heart is true you're a pal and a confidant. </p>
+
+        </mat-card-content>
+    </mat-card>
+
+
+</div>-->
+
+<div class="container title">
+    <h1>Boots of Spanish Leather</h1>
+
+</div>
+
+
+
+<div class="calloutcard" fxlayout.lt-md="column" fxLayoutGap="1%" fxLayoutAlign="center center">
+    <mat-card class="image04" fxFlex="40" fxFlex.sm="120">
+
+        <img mat-card-image src="assets/images/food2.png" alt="">
+
+        <div class="ovrly"></div>
+        <mat-card-content class="buttons">
+            <a href="#" class="fa fa-link"></a>
+            <a href="#" class="fa fa-search"></a>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="image04" fxFlex="40" fxFlex.sm="120">
+
+        <img mat-card-image src="assets/images/food2.png" alt="">
+
+        <div class="ovrly"></div>
+        <mat-card-content class="buttons">
+            <a href="#" class="fa fa-link"></a>
+            <a href="#" class="fa fa-search"></a>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="image04" fxFlex="40" fxFlex.sm="120">
+
+        <img mat-card-image src="assets/images/food2.png" alt="">
+
+        <div class="ovrly"></div>
+        <mat-card-content class="buttons">
+            <a href="#" class="fa fa-link"></a>
+            <a href="#" class="fa fa-search"></a>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="image04" fxFlex="40" fxFlex.sm="120">
+
+        <img mat-card-image src="assets/images/food2.png" alt="">
+
+        <div class="ovrly"></div>
+        <mat-card-content class="buttons">
+            <a href="#" class="fa fa-link"></a>
+            <a href="#" class="fa fa-search"></a>
+        </mat-card-content>
+    </mat-card>
+
+
+
+
+</div>
+<!--图片中的CSS效果
+<div class="cardtest1" fxlayout.lt-md="column" fxLayoutAlign="center center">
+    <mat-card class="image05">
+
+        <img mat-card-image src="assets/images/5.jpg" alt="" class="imgB">
+        <img mat-card-image src="assets/images/5.jpg" alt="" class="imgT">
+
+        <div class="ovrly"></div>
+        <mat-card-content class="buttons">
+            <a href="#" class="fa fa-link"></a>
+            <a href="#" class="fa fa-search"></a>
+        </mat-card-content>
+
+
+    </mat-card>
+</div>-->

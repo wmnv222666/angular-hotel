@@ -1,0 +1,54 @@
+<!--<div class="navtabs-container">
+  <nav mat-tab-navbar>
+      <div fxLayout="row" fxLayoutAlign="space-around center" >
+        <mat-tab-group>
+             <mat-tab label="Home">
+                <app-main></app-main>
+              </mat-tab>
+              
+
+            
+              <mat-tab label="Two"></mat-tab>
+
+              <mat-tab label="three"></mat-tab>
+
+              <mat-tab label="for"></mat-tab>
+
+              <mat-tab label="five"></mat-tab>
+
+        </mat-tab-group>
+    </div>
+  </nav>
+</div>-->
+ <!--<span class="toolbar-flex"></span>可以用这个放在
+再css 中 flex: 1 0.5 auto-->
+
+<!--上面就可以做到下面的操作-->
+
+<div class="navtabs-container">
+ 
+    <nav mat-tab-nav-bar fxLayout="raw" fxLayoutAlign="space-around center">
+            <a mat-tab-link routerLink="/"
+                routerLinkActive #main="routerLinkActive"
+                [active]="main.isActive">Home
+            </a>
+            <a mat-tab-link routerLink="/food"
+            routerLinkActive #food="routerLinkActive"
+            [active]="food.isActive">Food
+            </a>
+            <a mat-tab-link routerLink="/lifestyle"
+            routerLinkActive #lifestyle="routerLinkActive"
+            [active]="lifestyle.isActive">Lifestyle
+            </a>
+            <a mat-tab-link routerLink="/celebration"
+            routerLinkActive #celebration="routerLinkActive"
+            [active]="celebration.isActive">Celebration
+            </a>
+            <a mat-tab-link routerLink="/offices"
+            routerLinkActive #offices="routerLinkActive"
+            [active]="offices.isActive">Offices
+            </a>
+    </nav>
+    <router-outlet></router-outlet>
+
+  </div>

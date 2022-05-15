@@ -1,0 +1,24 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side">
+        <!--给的案例上#sidenav mode="side">-->
+        <app-sidenav (closeSideNavigation)="sidenav.close()"></app-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <app-header (SideNavigationToggle)="sidenav.toggle()"></app-header>
+        <!--mat-button (click)="sidenav.toggle()" or (click)="sidenav.toggle()也可以实现效果-->
+        <app-navtabs></app-navtabs>
+
+        <!--加入这个main并且把路由反在内就可以
+        实现点击登录等页面实现在页面上 或者去掉main也可以-->
+        <main>
+            <router-outlet></router-outlet>
+
+        </main>
+
+    </mat-sidenav-content>
+
+
+
+</mat-sidenav-container>
+<app-footer></app-footer>
